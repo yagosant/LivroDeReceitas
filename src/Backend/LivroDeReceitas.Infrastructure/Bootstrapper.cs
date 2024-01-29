@@ -8,6 +8,10 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using LivroDeReceitas.Domain.Repositorios;
+using LivroDeReceitas.Infrastructure.AcessoRepositorio.Repositorio;
+using LivroDeReceitas.Infrastructure.AcessoRepositorio;
+using Microsoft.EntityFrameworkCore;
 
 namespace LivroDeReceitas.Infrastructure
 {
@@ -16,8 +20,30 @@ namespace LivroDeReceitas.Infrastructure
         public static void AddRepositorio(this IServiceCollection services, IConfiguration configurationManager)
         {
             AddFluentMigrator(services, configurationManager);
+            addContexto(services, configurationManager);
+            AddUnidadeDeTrabalho(services);
+            AddRepositorios(services);
         }
 
+        private static void addContexto(IServiceCollection services, IConfiguration configurationManager)
+        {
+            var versaoservidor = new MySqlServerVersion(new Version(10,4,11));
+            var conectionString = configurationManager.GetConexaoCompleta();
+
+            services.AddDbContext<ReceitasContext>(dbContextOptions =>
+            dbContextOptions.UseMySql(conectionString, versaoservidor)
+            );
+        }
+        private static void AddUnidadeDeTrabalho(IServiceCollection services)
+        {
+            services.AddScoped<IUnidadeDeTrabalho, UnidadeDeTrabalho>();
+        }
+
+        private static void AddRepositorios(IServiceCollection services)
+        {
+            services.AddScoped<IUsuarioWriteOnlyRepositorio, UsuarioRepositorio>()
+                .AddScoped<IUsuarioReadOnlyRepositorio, UsuarioRepositorio>();
+        }
         private static void AddFluentMigrator(IServiceCollection services, IConfiguration configurationManager)
         {
             services.AddFluentMigratorCore().ConfigureRunner(c =>
