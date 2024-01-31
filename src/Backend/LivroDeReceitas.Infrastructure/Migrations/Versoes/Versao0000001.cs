@@ -19,7 +19,7 @@ namespace LivroDeReceitas.Infrastructure.Migrations.Versoes
         public override void Up()
         {
             //cria as tabelas
-           var tabela =  VersaoBase.InserirColunasPadrao(Create.Table("Usuario"));
+           var tabela =  VersaoBase.InserirColunasPadrao(Create.Table("Usuarios"));
 
             tabela
                 .WithColumn("Name").AsString(100).PrimaryKey().NotNullable()
