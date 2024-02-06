@@ -131,5 +131,14 @@ namespace LivroDeReceitas.Exceptions {
                 return ResourceManager.GetString("TELEFONE_USUARIO_INVALIDO", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O Email ja está cadastrado no sistema.
+        /// </summary>
+        public static string USUARIO_JA_EXISTE {
+            get {
+                return ResourceManager.GetString("USUARIO_JA_EXISTE", resourceCulture);
+            }
+        }
     }
 }

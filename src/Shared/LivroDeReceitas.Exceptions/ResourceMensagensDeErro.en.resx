@@ -141,4 +141,7 @@
   <data name="TELEFONE_USUARIO_INVALIDO" xml:space="preserve">
     <value>The user's phonenumber is invalid, must be at the format XX X XXXX-XXXX</value>
   </data>
+  <data name="USUARIO_JA_EXISTE" xml:space="preserve">
+    <value>The user's emai is exists</value>
+  </data>
 </root>

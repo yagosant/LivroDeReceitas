@@ -141,4 +141,7 @@
   <data name="TELEFONE_USUARIO_INVALIDO" xml:space="preserve">
     <value>O telefone informado é inválido, siga o formato XX X XXXX-XXXX</value>
   </data>
+  <data name="USUARIO_JA_EXISTE" xml:space="preserve">
+    <value>O Email ja está cadastrado no sistema</value>
+  </data>
 </root>
