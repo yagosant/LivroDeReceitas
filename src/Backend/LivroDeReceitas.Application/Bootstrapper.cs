@@ -15,10 +15,12 @@ namespace LivroDeReceitas.Application
     {
         public static void AddApplication(this IServiceCollection services, IConfiguration configuration)
         {
+
             AdicionarChaveAdicionalsenha(services, configuration);
             AdicionarTokenJWT(services, configuration);
 
             services.AddScoped<IRegistrarUsuarioUseCase, RegistrarUsuarioUseCase>();
+
         }
 
         private static void AdicionarChaveAdicionalsenha(IServiceCollection services, IConfiguration configuration)

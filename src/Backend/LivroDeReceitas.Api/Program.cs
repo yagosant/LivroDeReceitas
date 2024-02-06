@@ -1,5 +1,7 @@
 using LivroDeReceitas.Api.Filtros;
+using LivroDeReceitas.Application;
 using LivroDeReceitas.Application.Services.AutoMapper;
+using LivroDeReceitas.Application.UseCases.Usuario.Registrar;
 using LivroDeReceitas.Domain.Extension;
 using LivroDeReceitas.Infrastructure;
 using LivroDeReceitas.Infrastructure.Migrations;
@@ -13,6 +15,7 @@ namespace LivroDeReceitas.Api
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddRouting(option => option.LowercaseUrls = true);
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -20,6 +23,8 @@ namespace LivroDeReceitas.Api
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddRepositorio(builder.Configuration);
+            builder.Services.AddApplication(builder.Configuration);
+
 
             builder.Services.AddMvc(options => options.Filters.Add(typeof(FiltroExceptions)));
 

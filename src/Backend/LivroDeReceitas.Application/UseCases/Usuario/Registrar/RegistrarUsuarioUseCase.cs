@@ -59,7 +59,7 @@ namespace LivroDeReceitas.Application.UseCases.Usuario.Registrar
 
             if (existeEmail)
             {
-                resultado.Errors.Add(new FluentValidation.Results.ValidationFailure("email", ResourceMensagensDeErro.USUARIO_JA_EXISTE);
+                resultado.Errors.Add(new FluentValidation.Results.ValidationFailure("email", ResourceMensagensDeErro.USUARIO_JA_EXISTE));
             }
             if(!resultado.IsValid)
             {
